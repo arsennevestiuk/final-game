@@ -47,6 +47,9 @@ class Player(GameSprite):
             bullet = Bullet(self.rect.centerx, self.rect.centery, "left")
         return bullet
 
+
+
+
 class Bullet(sprite.Sprite):
     def __init__(self, x,y, direction ):
         self.bull = Surface((20,20))

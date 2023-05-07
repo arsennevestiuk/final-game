@@ -20,6 +20,8 @@ btn1 = Button('start_btn.png',  int(WINDOW_HEIGHT/2),int(WINDOW_WIDTH/2), 100, 5
 btn2 = Button('exit_btn.png', 300,100, 100, 50)
 
 player = Player('mario_standing.png','mario_right.png', int(WINDOW_HEIGHT/5),int(WINDOW_WIDTH/5) , 100,200)
+kaktys = GameSprite('kaktys.png',int(WINDOW_HEIGHT/8),int(WINDOW_WIDTH/8) , 600,343)
+bitcoin = GameSprite('bitcoin'int(WINDOW_HEIGHT/8),int(WINDOW_WIDTH/8) ,1200,200)
 money = GameSprite('jump.png',50,50 , 200,200)
 speed = 0
 
@@ -30,6 +32,11 @@ walls = []
 for i in range(3):
     wall = Wall(100,10, randint(650,1500),randint(100, 400), color=(255,0,0))
     walls.append(wall)
+
+font.init()
+font1 = font.SysFont("Arial",20)
+count = 0
+img = font1.render(str(count),True,(255,255,255))
 
 
 while game:
@@ -47,13 +54,25 @@ while game:
                 bullets.append(player.fire())
   
     if run:
-    
+        
         for i in range(0, tiles):
             window.blit(bg, (i * bg_width + scroll, 0))
-    
+        
+        window.blit(img, (20,20))
+        
+        
+
         if abs(scroll) > bg_width:
             scroll = 0
         scroll -= 5
+        kaktys.rect.x-=5
+        if kaktys.rect.x < 0:
+            kaktys.rect.x = 700
+        kaktys.draw(window)
+        bitcoin.draw(window)
+        bitcoin.rect.x-=5
+        if bitcoin.rect.x < 0:
+            bitcoin = 1200
         player.draw(window)
         player.move()
         player.jump()
@@ -67,7 +86,6 @@ while game:
         for b in bullets:
             b.update(window)
         
-
 
       
     else:
