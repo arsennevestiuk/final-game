@@ -1,5 +1,5 @@
 from pygame import *
-
+from random import randint
 class GameSprite(sprite.Sprite):
     def __init__(self, img_name, width, height, x, y):
         self.image = transform.scale(image.load(img_name), (width, height))
@@ -38,18 +38,35 @@ class Player(GameSprite):
                 self.isJump = False
                 self.jumpCount = 10
 
-    def graviti(self):
-        
 
 
-    def fire(self,bullets):
-        bullet = Wall(100,5,self.rect.centerx , self rect.rect.left)
-        bullets.add(bullet)
-        return bullets
+    def fire(self):
+        if self.image == self.img_1:
+            bullet = Bullet(self.rect.centerx, self.rect.centery, "right")
+        else:
+            bullet = Bullet(self.rect.centerx, self.rect.centery, "left")
+        return bullet
 
-class Enemy(GameSprite):
-    def move(self):
-        pass
+class Bullet(sprite.Sprite):
+    def __init__(self, x,y, direction ):
+        self.bull = Surface((20,20))
+        self.bull.fill((255,0,0))
+        self.rect = self.bull.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+        self.direction = direction
+        self.speed = 5
+
+    def update(self, window):
+        if self.direction == "right":
+            self.rect.x += self.speed
+        if self.direction == "left":
+            self.rect.x -= self.speed
+     
+
+        window.blit(self.bull, (self.rect.x, self.rect.y))
+
+
 
 class Wall(GameSprite):
     def __init__(self, width,height, x,y, color=(255,255,255), transperancy=255):
@@ -61,4 +78,13 @@ class Wall(GameSprite):
         self.rect.y = y
 
     def draw(self, window):
+        self.rect.x -= 5
+        if self.rect.x < 0:
+            self.rect.x = 700
+            self.rect.y = randint(50, 300)
+
+
+        window.blit(self.wall, (self.rect.x, self.rect.y))
+
+    def draw_wall(self, window):
         window.blit(self.wall, (self.rect.x, self.rect.y))
