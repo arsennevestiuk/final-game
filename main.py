@@ -20,8 +20,6 @@ btn1 = Button('start_btn.png',  int(WINDOW_HEIGHT/2),int(WINDOW_WIDTH/2), 100, 5
 btn2 = Button('exit_btn.png', 300,100, 100, 50)
 
 player = Player('mario_standing.png','mario_right.png', int(WINDOW_HEIGHT/5),int(WINDOW_WIDTH/5) , 100,200)
-kaktys = GameSprite('kaktys.png',int(WINDOW_HEIGHT/8),int(WINDOW_WIDTH/8) , 600,343)
-bitcoin = GameSprite('bitcoin'int(WINDOW_HEIGHT/8),int(WINDOW_WIDTH/8) ,1200,200)
 money = GameSprite('jump.png',50,50 , 200,200)
 speed = 0
 
@@ -65,14 +63,6 @@ while game:
         if abs(scroll) > bg_width:
             scroll = 0
         scroll -= 5
-        kaktys.rect.x-=5
-        if kaktys.rect.x < 0:
-            kaktys.rect.x = 700
-        kaktys.draw(window)
-        bitcoin.draw(window)
-        bitcoin.rect.x-=5
-        if bitcoin.rect.x < 0:
-            bitcoin = 1200
         player.draw(window)
         player.move()
         player.jump()
