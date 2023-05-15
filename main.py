@@ -5,6 +5,7 @@ from random import randint
 
 tiles = 2 
 scroll = 0
+a = 400
 
 window = display.set_mode((900,500))
 WINDOW_WIDTH, WINDOW_HEIGHT = display.get_surface().get_size()
@@ -22,16 +23,34 @@ btn2 = Button('exit_btn.png', 300,100, 100, 50)
 player = Player('mario_standing.png','mario_right.png', int(WINDOW_HEIGHT/10),int(WINDOW_WIDTH/10) , 100,200)
 money1 = GameSprite('pngwing.com.png',50,50 , 400,50)
 money2 = GameSprite('pngwing.com.png',50,50 , 0,250)
-money3 = GameSprite('pngwing.com.png',50,50 , 700,380)
+money3 = GameSprite('pngwing.com.png',50,50 , 2000,380)
+money4 = GameSprite('pngwing.com.png',50,50 , 2000,50)
+money5 = GameSprite('pngwing.com.png',50,50 , 2000,250)
+money6 = GameSprite('pngwing.com.png',50,50 , 2000,380)
+money7 = GameSprite('pngwing.com.png',50,50 , 2000,380)
+money8 = GameSprite('pngwing.com.png',50,50 , 2000,250)
+money9 = GameSprite('pngwing.com.png',50,50 , 2000,380)
+money10 = GameSprite('pngwing.com.png',50,50 , 2000,380)
+piy = GameSprite('piy.png',15,15, 1000, 200)
+piy1 = GameSprite('piy.png',15,15, 1000, 45)
 shipi = GameSprite('shipi.png',100,50,400,400)
 shipi1 = GameSprite('shipi.png',100,50,500,400)
 shipi2 = GameSprite('shipi.png',100,50,600,400)
+teleport = GameSprite('teleport.png',50,50,850,390)
+teleport1 = GameSprite('teleport.png',50,50,850,390)
+monster = GameSprite('monster.png',50,50,5000,380)
+key = GameSprite('key.png',50,50,2000,10)
+chest = GameSprite('chest.png',50,50,2000,20)
 wall1 = Wall(100,20,100,400,(255,0,0))
 wall2 = Wall(100,20,0,300,(255,0,0))
 wall3 = Wall(100,20,200,150,(255,0,0))
 wall4 = Wall(100,20,400,100,(255,0,0))
 wall5 = Wall(100,20,500,250,(255,0,0))
 wall6 = Wall(100,20,400,100,(255,0,0))
+wall7 = Wall(100,20,2000,100,(255,0,0))
+wall8 = Wall(100,20,2000,100,(255,0,0))
+wall9 = Wall(100,20,2000,100,(255,0,0))
+
 
 speed = 0
 
@@ -95,6 +114,9 @@ while game:
         if player.rect.colliderect(wall6.rect):
             player.rect.bottom = wall6.rect.top
         
+        if player.rect.colliderect(wall7.rect):
+            player.rect.bottom = wall7.rect.top
+
         if player.rect.colliderect(money1.rect):
             count = count + 1
             img = font1.render(str(count),True,(255,255,255))
@@ -110,6 +132,41 @@ while game:
             img = font1.render(str(count),True,(255,255,255))
             money3.rect.x = 2000
         
+        if player.rect.colliderect(money4.rect):
+            count = count + 1
+            img = font1.render(str(count),True,(255,255,255))
+            money4.rect.x = 2000
+        
+        if player.rect.colliderect(money5.rect):
+            count = count + 1
+            img = font1.render(str(count),True,(255,255,255))
+            money5.rect.x = 2000
+        
+        if player.rect.colliderect(money6.rect):
+            count = count + 1
+            img = font1.render(str(count),True,(255,255,255))
+            money6.rect.x = 2000
+        
+        if player.rect.colliderect(money7.rect):
+            count = count + 1
+            img = font1.render(str(count),True,(255,255,255))
+            money7.rect.x = 2000
+        
+        if player.rect.colliderect(money8.rect):
+            count = count + 1
+            img = font1.render(str(count),True,(255,255,255))
+            money8.rect.x = 2000
+        
+        if player.rect.colliderect(money9.rect):
+            count = count + 1
+            img = font1.render(str(count),True,(255,255,255))
+            money9.rect.x = 2000
+        
+        if player.rect.colliderect(money10.rect):
+            count = count + 1
+            img = font1.render(str(count),True,(255,255,255))
+            money10.rect.x = 2000
+
         if player.rect.colliderect(shipi.rect):
             life = life - 1
             img2 = font2.render(str(life),True,(255,0,0))
@@ -121,7 +178,93 @@ while game:
         if player.rect.colliderect(shipi2.rect):
             life = life - 1
             img2 = font2.render(str(life),True,(255,0,0))
+        
+        if player.rect.colliderect(piy.rect):
+            life = life - 1
+            img2 = font2.render(str(life),True,(255,0,0))
+        
+        if player.rect.colliderect(piy1.rect):
+            life = life - 1
+            img2 = font2.render(str(life),True,(255,0,0))
+        
+        if player.rect.colliderect(monster.rect):
+            life = life - 1
+            img2 = font2.render(str(life),True,(255,0,0))
 
+        if player.rect.colliderect(key.rect):
+                wall6 = Wall(100,20,800,100,(255,0,0))
+                key.rect.x = 2000
+
+        if player.rect.colliderect(chest.rect):
+            count = count + 30
+            img = font1.render(str(count),True,(255,255,255))
+            wall1 = Wall(100,20,2000,300,(255,0,0))
+            wall2 = Wall(100,20,2000,200,(255,0,0))
+            wall3 = Wall(100,20,2000,150,(255,0,0))
+            wall4 = Wall(20,100,2000,100,(255,0,0))
+            wall5 = Wall(100,20,2000,100,(255,0,0))
+            wall6 = Wall(100,20,2000,100,(255,0,0))
+            wall7 = Wall(100,20,2000,200,(255,0,0))
+            wall8 = Wall(20,100,2000,100,(255,0,0))
+            wall9 = Wall(20,100,2000,100,(255,0,0))
+            money1 = GameSprite('pngwing.com.png',50,50 , 100,380)
+            money2 = GameSprite('pngwing.com.png',50,50 , 150,380)
+            money3 = GameSprite('pngwing.com.png',50,50 , 200,380)
+            money4 = GameSprite('pngwing.com.png',50,50 , 250,380)
+            money5 = GameSprite('pngwing.com.png',50,50 , 300,380)
+            money6 = GameSprite('pngwing.com.png',50,50 , 350,380)
+            money7 = GameSprite('pngwing.com.png',50,50 , 400,380)
+            money8 = GameSprite('pngwing.com.png',50,50 , 450,380)
+            money9 = GameSprite('pngwing.com.png',50,50 , 500,380)
+            money10 = GameSprite('pngwing.com.png',50,50 , 550,380)
+            teleport1 = GameSprite('teleport.png',50,50,2000,390)
+            chest = GameSprite('chest.png',50,50,2000,20)
+            shipi = GameSprite('shipi.png',100,50,2000,400)
+            shipi1 = GameSprite('shipi.png',100,50,2000,400)
+            shipi2 = GameSprite('shipi.png',100,50,2000,400)
+            piy = GameSprite('piy.png',15,15, 100000, 200)
+            piy1 = GameSprite('piy.png',15,15, 100000, 45)
+            monster = GameSprite('monster.png',50,50,5000,380)
+
+
+        if player.rect.colliderect(teleport.rect):
+            wall1 = Wall(100,20,800,300,(255,0,0))
+            wall2 = Wall(100,20,650,200,(255,0,0))
+            wall3 = Wall(100,20,350,150,(255,0,0))
+            wall4 = Wall(20,100,600,100,(255,0,0))
+            wall5 = Wall(100,20,550,100,(255,0,0))
+            wall6 = Wall(100,20,500,100,(255,0,0))
+            wall7 = Wall(100,20,100,200,(255,0,0))
+            wall8 = Wall(20,100,200,100,(255,0,0))
+            wall9 = Wall(20,100,80,100,(255,0,0))
+
+            money4 = GameSprite('pngwing.com.png',50,50 , 700,50)
+            money5 = GameSprite('pngwing.com.png',50,50 , 800,250)
+            money6 = GameSprite('pngwing.com.png',50,50 , 200,380)
+            money7 = GameSprite('pngwing.com.png',50,50 , 120,100)
+            teleport1 = GameSprite('teleport.png',50,50,10,380)
+            monster = GameSprite('monster.png',50,50,50,380)
+
+        if player.rect.colliderect(teleport1.rect):
+            a = 800
+            money1 = GameSprite('pngwing.com.png',50,50 , 700,180)
+            money2 = GameSprite('pngwing.com.png',50,50 , 750,380)
+            money3 = GameSprite('pngwing.com.png',50,50 , 250,330)
+            money4 = GameSprite('pngwing.com.png',50,50 , 550,200)
+            wall1 = Wall(20,100,100,250,(255,0,0))
+            wall2 = Wall(100,20,650,200,(255,0,0))
+            wall3 = Wall(100,20,350,150,(255,0,0))
+            wall4 = Wall(20,100,800,0,(255,255,255))
+            wall5 = Wall(100,20,550,250,(255,0,0))
+            wall7 = Wall(100,20,100,200,(255,0,0))
+            wall8 = Wall(20,100,2000,100,(255,0,0))
+            wall9 = Wall(20,100,2000,100,(255,0,0))
+
+
+            key = GameSprite('key.png',50,50,800,380)
+            teleport = GameSprite('teleport.png',50,50,2000,390)
+            monster = GameSprite('monster.png',50,50,800,380)
+            chest = GameSprite('chest.png',50,50,830,10)
 
         if abs(scroll) > bg_width:
             scroll = 0
@@ -134,12 +277,48 @@ while game:
         wall4.draw_wall(window)
         wall5.draw_wall(window)
         wall6.draw_wall(window)
+        wall7.draw_wall(window)
+        wall8.draw_wall(window)
+        wall9.draw_wall(window)
+        
+
         money1.draw(window)
         money2.draw(window)
         money3.draw(window)
+        money4.draw(window)
+        money5.draw(window)
+        money6.draw(window)
+        money7.draw(window)
+        money8.draw(window)
+        money9.draw(window)
+        money10.draw(window)
+
         shipi.draw(window)
         shipi1.draw(window)
         shipi2.draw(window)
+
+        piy.rect.x-=3
+        if piy.rect.x < 0:
+            piy.rect.x = 700
+        piy.draw(window)
+        piy1.rect.x-=1
+        if piy1.rect.x < 0:
+            piy1.rect.x = 700
+        piy1.draw(window)
+
+
+        teleport.draw(window) 
+        teleport1.draw(window)
+        
+        monster.draw(window)
+        monster.rect.x-= 1
+        if monster.rect.x < 0:
+            monster.rect.x = a
+        
+        key.draw(window)
+
+        chest.draw(window)
+
         player.draw(window)
         player.move()
         player.jump()
@@ -164,4 +343,4 @@ while game:
     
    
     display.update()
-    clock.tick(120)
+    clock.tick(60)
