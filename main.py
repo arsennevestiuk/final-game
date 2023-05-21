@@ -2,6 +2,7 @@ from pygame import *
 from button import Button
 from sprite import Player, GameSprite, Wall
 from random import randint
+from time import sleep
 
 tiles = 2 
 scroll = 0
@@ -31,6 +32,8 @@ money7 = GameSprite('pngwing.com.png',50,50 , 2000,380)
 money8 = GameSprite('pngwing.com.png',50,50 , 2000,250)
 money9 = GameSprite('pngwing.com.png',50,50 , 2000,380)
 money10 = GameSprite('pngwing.com.png',50,50 , 2000,380)
+priz = GameSprite('nefr.jpg',50,50, 2000,380)
+priz1 = GameSprite('nefr.jpg',50,50, 0,50)
 piy = GameSprite('piy.png',15,15, 1000, 200)
 piy1 = GameSprite('piy.png',15,15, 1000, 45)
 shipi = GameSprite('shipi.png',100,50,400,400)
@@ -41,15 +44,15 @@ teleport1 = GameSprite('teleport.png',50,50,850,390)
 monster = GameSprite('monster.png',50,50,5000,380)
 key = GameSprite('key.png',50,50,2000,10)
 chest = GameSprite('chest.png',50,50,2000,20)
-wall1 = Wall(100,20,100,400,(255,0,0))
-wall2 = Wall(100,20,0,300,(255,0,0))
-wall3 = Wall(100,20,200,150,(255,0,0))
-wall4 = Wall(100,20,400,100,(255,0,0))
-wall5 = Wall(100,20,500,250,(255,0,0))
-wall6 = Wall(100,20,400,100,(255,0,0))
-wall7 = Wall(100,20,2000,100,(255,0,0))
-wall8 = Wall(100,20,2000,100,(255,0,0))
-wall9 = Wall(100,20,2000,100,(255,0,0))
+wall1 = Wall(100,30,100,400,(255,0,0))
+wall2 = Wall(100,30,0,300,(255,0,0))
+wall3 = Wall(100,30,200,150,(255,0,0))
+wall4 = Wall(100,30,400,100,(255,0,0))
+wall5 = Wall(100,30,500,250,(255,0,0))
+wall6 = Wall(100,30,400,100,(255,0,0))
+wall7 = Wall(100,30,2000,100,(255,0,0))
+wall8 = Wall(100,30,2000,100,(255,0,0))
+wall9 = Wall(100,30,2000,100,(255,0,0))
 
 
 speed = 0
@@ -195,18 +198,26 @@ while game:
                 wall6 = Wall(100,20,800,100,(255,0,0))
                 key.rect.x = 2000
 
+        if player.rect.colliderect(priz.rect):
+            priz = GameSprite('nefr.jpg',50,50, 2000,380)
+            money1 = GameSprite('pngwing.com.png',50,50 , 800,0)
+        
+        if player.rect.colliderect(priz1.rect):
+            priz1 = GameSprite('nefr.jpg',50,50, 2000,380)
+            money7 = GameSprite('pngwing.com.png',50,50 , 0,200)
+
         if player.rect.colliderect(chest.rect):
             count = count + 30
             img = font1.render(str(count),True,(255,255,255))
-            wall1 = Wall(100,20,2000,300,(255,0,0))
-            wall2 = Wall(100,20,2000,200,(255,0,0))
-            wall3 = Wall(100,20,2000,150,(255,0,0))
-            wall4 = Wall(20,100,2000,100,(255,0,0))
-            wall5 = Wall(100,20,2000,100,(255,0,0))
-            wall6 = Wall(100,20,2000,100,(255,0,0))
-            wall7 = Wall(100,20,2000,200,(255,0,0))
-            wall8 = Wall(20,100,2000,100,(255,0,0))
-            wall9 = Wall(20,100,2000,100,(255,0,0))
+            wall1 = Wall(100,30,2000,300,(255,0,0))
+            wall2 = Wall(100,30,2000,200,(255,0,0))
+            wall3 = Wall(100,30,2000,150,(255,0,0))
+            wall4 = Wall(30,100,2000,100,(255,0,0))
+            wall5 = Wall(100,30,2000,100,(255,0,0))
+            wall6 = Wall(100,30,2000,100,(255,0,0))
+            wall7 = Wall(100,30,2000,200,(255,0,0))
+            wall8 = Wall(30,100,2000,100,(255,0,0))
+            wall9 = Wall(30,100,2000,100,(255,0,0))
             money1 = GameSprite('pngwing.com.png',50,50 , 100,380)
             money2 = GameSprite('pngwing.com.png',50,50 , 150,380)
             money3 = GameSprite('pngwing.com.png',50,50 , 200,380)
@@ -228,15 +239,15 @@ while game:
 
 
         if player.rect.colliderect(teleport.rect):
-            wall1 = Wall(100,20,800,300,(255,0,0))
-            wall2 = Wall(100,20,650,200,(255,0,0))
-            wall3 = Wall(100,20,350,150,(255,0,0))
-            wall4 = Wall(20,100,600,100,(255,0,0))
-            wall5 = Wall(100,20,550,100,(255,0,0))
-            wall6 = Wall(100,20,500,100,(255,0,0))
-            wall7 = Wall(100,20,100,200,(255,0,0))
-            wall8 = Wall(20,100,200,100,(255,0,0))
-            wall9 = Wall(20,100,80,100,(255,0,0))
+            wall1 = Wall(100,30,800,300,(255,0,0))
+            wall2 = Wall(100,30,650,200,(255,0,0))
+            wall3 = Wall(100,30,350,150,(255,0,0))
+            wall4 = Wall(30,100,600,100,(255,0,0))
+            wall5 = Wall(100,30,550,100,(255,0,0))
+            wall6 = Wall(100,30,500,100,(255,0,0))
+            wall7 = Wall(100,30,100,200,(255,0,0))
+            wall8 = Wall(30,100,200,100,(255,0,0))
+            wall9 = Wall(30,100,80,100,(255,0,0))
 
             money4 = GameSprite('pngwing.com.png',50,50 , 700,50)
             money5 = GameSprite('pngwing.com.png',50,50 , 800,250)
@@ -244,6 +255,7 @@ while game:
             money7 = GameSprite('pngwing.com.png',50,50 , 120,100)
             teleport1 = GameSprite('teleport.png',50,50,10,380)
             monster = GameSprite('monster.png',50,50,50,380)
+            priz = GameSprite('nefr.jpg',50,50, 800,50)
 
         if player.rect.colliderect(teleport1.rect):
             a = 800
@@ -251,14 +263,14 @@ while game:
             money2 = GameSprite('pngwing.com.png',50,50 , 750,380)
             money3 = GameSprite('pngwing.com.png',50,50 , 250,330)
             money4 = GameSprite('pngwing.com.png',50,50 , 550,200)
-            wall1 = Wall(20,100,100,250,(255,0,0))
-            wall2 = Wall(100,20,650,200,(255,0,0))
-            wall3 = Wall(100,20,350,150,(255,0,0))
-            wall4 = Wall(20,100,800,0,(255,255,255))
-            wall5 = Wall(100,20,550,250,(255,0,0))
-            wall7 = Wall(100,20,100,200,(255,0,0))
-            wall8 = Wall(20,100,2000,100,(255,0,0))
-            wall9 = Wall(20,100,2000,100,(255,0,0))
+            wall1 = Wall(30,100,100,250,(255,0,0))
+            wall2 = Wall(100,30,650,200,(255,0,0))
+            wall3 = Wall(100,30,350,150,(255,0,0))
+            wall4 = Wall(30,100,800,0,(255,255,255))
+            wall5 = Wall(100,30,550,250,(255,0,0))
+            wall7 = Wall(100,30,100,200,(255,0,0))
+            wall8 = Wall(30,100,2000,100,(255,0,0))
+            wall9 = Wall(30,100,2000,100,(255,0,0))
 
 
             key = GameSprite('key.png',50,50,800,380)
@@ -292,6 +304,9 @@ while game:
         money8.draw(window)
         money9.draw(window)
         money10.draw(window)
+
+        priz.draw(window)
+        priz1.draw(window)
 
         shipi.draw(window)
         shipi1.draw(window)

@@ -76,6 +76,7 @@ class Wall(GameSprite):
         self.wall = Surface((width,height))
         self.wall.set_alpha(transperancy)
         self.wall.fill(color)
+        self.wall = transform.scale(image.load('stina.png'),(width,height))
         self.rect = self.wall.get_rect()
         self.rect.x = x
         self.rect.y = y
